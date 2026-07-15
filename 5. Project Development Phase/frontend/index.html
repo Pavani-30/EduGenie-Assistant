@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EduGenie — Google Gemini Powered Learning Assistant</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">✦</span>
+    <span class="brand-name">EduGenie</span>
+  </div>
+  <p class="brand-tag">Google Gemini Powered Learning Assistant</p>
+</header>
+
+<main class="app">
+
+  <nav class="module-rail" aria-label="Learning modules">
+    <button class="module-btn active" data-module="explain">
+      <span class="module-index">01</span>
+      <span class="module-label">Explain a Concept</span>
+    </button>
+    <button class="module-btn" data-module="qa">
+      <span class="module-index">02</span>
+      <span class="module-label">Ask a Question</span>
+    </button>
+    <button class="module-btn" data-module="quiz">
+      <span class="module-index">03</span>
+      <span class="module-label">Generate Quiz</span>
+    </button>
+    <button class="module-btn" data-module="summarize">
+      <span class="module-index">04</span>
+      <span class="module-label">Summarize Text</span>
+    </button>
+    <button class="module-btn" data-module="learn">
+      <span class="module-index">05</span>
+      <span class="module-label">Learning Path</span>
+    </button>
+  </nav>
+
+  <section class="workspace">
+
+    <!-- Explain -->
+    <form class="panel active" id="panel-explain" data-endpoint="/explain">
+      <h2>Simplified Concept Explanation</h2>
+      <p class="hint">Ask EduGenie to break a topic down in plain language.</p>
+      <label>Topic
+        <input type="text" name="topic" placeholder="e.g. Pythagoras Theorem" required />
+      </label>
+      <label>Level
+        <select name="level">
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+      </label>
+      <button type="submit">Explain it</button>
+    </form>
+
+    <!-- Q&A -->
+    <form class="panel" id="panel-qa" data-endpoint="/qa">
+      <h2>Intelligent Question Answering</h2>
+      <p class="hint">Ask any study question and get an accurate answer with context.</p>
+      <label>Question
+        <input type="text" name="question" placeholder="e.g. Which is the largest ocean?" required />
+      </label>
+      <button type="submit">Ask EduGenie</button>
+    </form>
+
+    <!-- Quiz -->
+    <form class="panel" id="panel-quiz" data-endpoint="/quiz">
+      <h2>AI-Powered Quiz Generation</h2>
+      <p class="hint">Self-assess your understanding of a topic with a generated quiz.</p>
+      <label>Topic
+        <input type="text" name="topic" placeholder="e.g. Pythagoras Theorem" required />
+      </label>
+      <label>Number of questions
+        <input type="number" name="num_questions" min="1" max="20" value="5" />
+      </label>
+      <button type="submit">Generate quiz</button>
+    </form>
+
+    <!-- Summarize -->
+    <form class="panel" id="panel-summarize" data-endpoint="/summarize">
+      <h2>Educational Text Summarization</h2>
+      <p class="hint">Paste study material and get concise review-ready bullet points.</p>
+      <label>Text
+        <textarea name="text" rows="6" placeholder="Paste your notes or article text here..." required></textarea>
+      </label>
+      <button type="submit">Summarize</button>
+    </form>
+
+    <!-- Learning Path -->
+    <form class="panel" id="panel-learn" data-endpoint="/learn/recommendations">
+      <h2>Personalized Learning Path</h2>
+      <p class="hint">Get a structured beginner &rarr; advanced roadmap for any subject.</p>
+      <label>Topic
+        <input type="text" name="topic" placeholder="e.g. SQL" required />
+      </label>
+      <button type="submit">Build my roadmap</button>
+    </form>
+
+    <div class="results" id="results" aria-live="polite">
+      <div class="results-empty">Your results will appear here.</div>
+    </div>
+
+  </section>
+</main>
+
+<footer class="footer">
+  Built with FastAPI + Google Gemini · Team EduGenie
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
