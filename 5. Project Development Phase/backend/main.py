@@ -46,6 +46,10 @@ app.add_middleware(
 )
 
 FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "..", "frontend")
+
+print("Frontend directory:", FRONTEND_DIR)
+print("Index exists:", os.path.exists(os.path.join(FRONTEND_DIR, "index.html")))
+
 app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
 
 
