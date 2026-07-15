@@ -15,11 +15,18 @@ Start -> Frontend: User Input -> FastAPI Backend (router)
 """
 
 import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+# Load .env FIRST
+BASE_DIR = Path(__file__).resolve().parent
+load_dotenv(BASE_DIR / ".env")
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from dotenv import load_dotenv
 
 from modules import explain, qa, quiz, summarize, learning_path
 from modules.schemas import (
@@ -29,8 +36,6 @@ from modules.schemas import (
     SummarizeRequest,
     LearningPathRequest,
 )
-
-load_dotenv()
 
 app = FastAPI(
     title="EduGenie - Google Gemini Powered Learning Assistant",
